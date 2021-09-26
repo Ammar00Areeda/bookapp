@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import './Login.css';
 
+
 class Login extends React.Component {
   render() {
+    const { isAuthenticated, loginWithRedirect } = this.props.auth0;
     return(
       <Card style={{ width: '18rem' }}>
         <Card.Body>
@@ -13,6 +15,7 @@ class Login extends React.Component {
             Click Below to Log In
           </Card.Text>
           {/* TODO: add a `LoginButton` component here that will log the user in with Auth0 */}
+          {!isAuthenticated && <button onClick={loginWithRedirect}>Log in</button>}
         </Card.Body>
       </Card>
     )
